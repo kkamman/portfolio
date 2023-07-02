@@ -1,0 +1,74 @@
+.gridHeader {
+    grid-area: header;
+}
+
+.gridSocials {
+    grid-area: socials;
+}
+
+.gridNavigation {
+    grid-area: navigation;
+}
+
+.gridContent {
+    grid-area: content;
+}
+
+.card {
+    grid-template-areas:
+        "header"
+        "navigation"
+        "content"
+        "socials";
+    grid-template-rows: auto auto 1fr auto;
+    gap: 2rem;
+    position: relative;
+    background:
+        repeating-linear-gradient(
+            60deg,
+            var(--gradient-color-1),
+            var(--gradient-color-1) 0.5%,
+            transparent 20%,
+            transparent 25%,
+            var(--gradient-color-1) 49.5%,
+            var(--gradient-color-1) 50%)
+        bottom left/200% 200%
+        var(--gradient-color-2);
+    overflow: hidden;
+    animation: diagonal_move 28s linear infinite;
+}
+
+.card::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: 10%;
+    pointer-events: none;
+    filter: url(#noise);
+}
+
+@keyframes diagonal_move {
+    100% {
+        background-position: top right;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    .card {
+        animation: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .card {
+        grid-template-areas:
+            "header content content content"
+            "navigation content content content"
+            "socials content content content";
+        grid-template-rows: auto auto auto;
+    }
+}

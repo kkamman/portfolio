@@ -23,7 +23,7 @@ export default function Socials({ className }: { className: string }) {
       {socialItems.map((item) => {
         return (
           <li
-            className="text-lg underline tracking-wide decoration-indigo-600 underline-offset-2"
+            className="p-2 md:p-0 md:text-lg underline tracking-wide decoration-indigo-600 underline-offset-2"
             key={item.label}
           >
             <a href={item.link}>{item.label}</a>
