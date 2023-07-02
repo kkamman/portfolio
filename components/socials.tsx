@@ -1,5 +1,3 @@
-"use client";
-
 type SocialItem = {
   label: string;
   link: string;

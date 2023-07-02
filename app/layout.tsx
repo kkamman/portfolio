@@ -1,11 +1,7 @@
-"use client";
-
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import styles from "./layout.module.css";
-import Navigation from "./navigation";
-import Socials from "./socials";
 
 const inter = Inter({ subsets: ["latin"], weight: "200" });
 
@@ -29,9 +25,7 @@ export default function RootLayout({
             <h1 className="text-4xl">Koen Kamman</h1>
             <h2 className="text-lg">Fullstack Developer</h2>
           </header>
-          <Navigation className={styles.gridNavigation} />
-          <Socials className={`${styles.gridSocials} self-end `} />
-          <main className={styles.gridContent}>{children}</main>
+          {children}
         </div>
         <svg>
           <filter id="noise">
