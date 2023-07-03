@@ -4,6 +4,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    mdxRs: true,
+  },
+  pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
 };
 
-module.exports = nextConfig
+const withMDX = require("@next/mdx")();
+module.exports = withMDX(nextConfig);

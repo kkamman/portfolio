@@ -1,9 +1,12 @@
+import Navigation from "@/app/navigation";
+import Breadcrumb from "@/components/breadcrumb";
+import ExternalLink from "@/components/external-link";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import styles from "./layout.module.css";
+import Link from "next/link";
+import "./globals.scss";
 
-const inter = Inter({ subsets: ["latin"], weight: "200" });
+const inter = Inter({ subsets: ["latin"], weight: "variable" });
 
 export const metadata: Metadata = {
   title: "Portfolio Koen Kamman",
@@ -18,30 +21,45 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        className={`h-full overflow-hidden text-slate-100 bg-black md:p-8 ${inter.className}`}
+        className={`${inter.className} h-full flex flex-col bg-zinc-100 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100`}
       >
-        <div className={`${styles.card} h-full p-4 grid md:rounded-xl md:p-8`}>
-          <header className={`tracking-widest ${styles.gridHeader}`}>
-            <h1 className="text-4xl">Koen Kamman</h1>
-            <h2 className="text-lg">Fullstack Developer</h2>
-          </header>
+        <header className="sticky top-0 bg-zinc-100/[.8] dark:bg-zinc-900/[.8] backdrop-blur-sm">
+          <div className="py-4 px-8 border-b border-zinc-200 dark:border-zinc-800">
+            <div className="container mx-auto flex items-center">
+              <Link className="mr-12 tracking-wide font-light" href="/">
+                <h1 className="text-xl">Koen Kamman</h1>
+                <h2 className="text-xs">Fullstack Developer</h2>
+              </Link>
+              <div className="flex flex-grow justify-between">
+                <Navigation />
+                <ul className="flex gap-4">
+                  <li>
+                    <ExternalLink href="https://github.com/kkamman">
+                      GitHub
+                    </ExternalLink>
+                  </li>
+                  <li>
+                    <ExternalLink href="https://stackoverflow.com/users/10368109/kkamman">
+                      StackOverflow
+                    </ExternalLink>
+                  </li>
+                  <li>
+                    <ExternalLink href="https://nl.linkedin.com/in/koen-kamman">
+                      LinkedIn
+                    </ExternalLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <Breadcrumb />
+        </header>
+        <main className="flex-grow container mx-auto px-8 py-4">
           {children}
-        </div>
-        <svg>
-          <filter id="noise">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="6.29"
-              numOctaves="6"
-            />
-            <feDisplacementMap
-              in="fractalNoise"
-              scale="50"
-              xChannelSelector="R"
-              yChannelSelector="G"
-            />
-          </filter>
-        </svg>
+        </main>
+        <footer className="border-t border-zinc-200 dark:border-zinc-800">
+          <div className="container mx-auto px-8 py-4"></div>
+        </footer>
       </body>
     </html>
   );
