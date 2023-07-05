@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaCaretRight } from "react-icons/fa6";
 
 export default function Breadcrumb() {
   const pathname = usePathname();
@@ -19,9 +20,11 @@ export default function Breadcrumb() {
             const href = "/" + segments.slice(0, index + 1).join("/");
 
             return (
-              <li className="flex gap-2" key={index + href}>
+              <li className="flex gap-2 items-center" key={index + href}>
                 {index !== 0 ? (
-                  <div className="pointer-events-none select-none">{"->"}</div>
+                  <div className="pointer-events-none select-none">
+                    <FaCaretRight />
+                  </div>
                 ) : (
                   <></>
                 )}
