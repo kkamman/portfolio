@@ -2,13 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaFolderOpen, FaHouse } from "react-icons/fa6";
+import {
+  FaFolderOpen,
+  FaGithub,
+  FaHouse,
+  FaLinkedin,
+  FaStackOverflow,
+} from "react-icons/fa6";
 
 export default function MobileNavigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="md:hidden sticky h-screen top-0 z-10 py-4 px-2 text-2xl border-r border-zinc-200 dark:border-zinc-800">
+    <nav className="flex flex-col justify-between md:hidden sticky h-screen top-0 z-10 py-4 px-2 text-2xl border-r border-zinc-200 dark:border-zinc-800">
       <ul className="flex flex-col gap-8">
         <li>
           <Link
@@ -18,7 +24,7 @@ export default function MobileNavigation() {
             }`}
           >
             <FaHouse />
-            <span className="text-xs">home</span>
+            <span className="text-xs">Home</span>
           </Link>
         </li>
         <li>
@@ -29,8 +35,34 @@ export default function MobileNavigation() {
             }`}
           >
             <FaFolderOpen />
-            <span className="text-xs">projects</span>
+            <span className="text-xs">Projects</span>
           </Link>
+        </li>
+      </ul>
+      <ul className="flex flex-col gap-8">
+        <li>
+          <a
+            href="https://github.com/kkamman"
+            className="flex flex-col items-center"
+          >
+            <FaGithub />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://stackoverflow.com/users/10368109/kkamman"
+            className="flex flex-col items-center"
+          >
+            <FaStackOverflow />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://nl.linkedin.com/in/koen-kamman"
+            className="flex flex-col items-center"
+          >
+            <FaLinkedin />
+          </a>
         </li>
       </ul>
     </nav>

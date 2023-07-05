@@ -19,6 +19,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const sha = require("child_process")
+    .execSync("git rev-parse --short HEAD")
+    .toString()
+    .trim();
+
+  const buildDate = new Date().toISOString();
+
   return (
     <html lang="en" className="h-full">
       <body
@@ -27,7 +34,7 @@ export default function RootLayout({
         <MobileNavigation />
         <div className="flex flex-col flex-grow">
           <header className="md:sticky md:top-0 bg-zinc-100/[.8] dark:bg-zinc-900/[.8] backdrop-blur-sm">
-            <div className="py-4 px-8 border-b border-zinc-200 dark:border-zinc-800">
+            <div className="py-2 md:py-4 px-4 md:px-8 border-b border-zinc-200 dark:border-zinc-800">
               <div className="container mx-auto flex items-center">
                 <Link className="mr-12 tracking-wide font-light" href="/">
                   <h1 className="text-xl">Koen Kamman</h1>
@@ -58,11 +65,22 @@ export default function RootLayout({
             <Breadcrumb className="hidden md:block" />
           </header>
           <Breadcrumb className="sticky top-0 md:hidden" />
-          <div className="px-8 py-4 flex-grow ">
+          <div className="p-4 md:p-8 flex-grow ">
             <main className="container mx-auto">{children}</main>
           </div>
-          <footer className="border-t border-zinc-200 dark:border-zinc-800">
-            <div className="container mx-auto px-8 py-4"></div>
+          <footer className="border-t p-4 md:p-8 border-zinc-200 dark:border-zinc-800 text-zinc-500">
+            <div className="container mx-auto text-xs">
+              <p>
+                commit:{" "}
+                <a
+                  href={`https://github.com/kkamman/portfolio/commit/${sha}`}
+                  className="underline"
+                >
+                  {sha}
+                </a>
+              </p>
+              <p>build date: {buildDate}</p>
+            </div>
           </footer>
         </div>
       </body>
