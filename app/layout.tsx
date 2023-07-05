@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         <MobileNavigation />
         <div className="flex flex-col flex-grow">
-          <header className="sticky top-0 bg-zinc-100/[.8] dark:bg-zinc-900/[.8] backdrop-blur-sm">
+          <header className="md:sticky md:top-0 bg-zinc-100/[.8] dark:bg-zinc-900/[.8] backdrop-blur-sm">
             <div className="py-4 px-8 border-b border-zinc-200 dark:border-zinc-800">
               <div className="container mx-auto flex items-center">
                 <Link className="mr-12 tracking-wide font-light" href="/">
@@ -55,11 +55,12 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
-            <Breadcrumb />
+            <Breadcrumb className="hidden md:block" />
           </header>
-          <main className="flex-grow container mx-auto px-8 py-4">
-            {children}
-          </main>
+          <Breadcrumb className="sticky top-0 md:hidden" />
+          <div className="px-8 py-4 flex-grow ">
+            <main className="container mx-auto">{children}</main>
+          </div>
           <footer className="border-t border-zinc-200 dark:border-zinc-800">
             <div className="container mx-auto px-8 py-4"></div>
           </footer>
