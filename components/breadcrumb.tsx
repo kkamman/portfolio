@@ -14,7 +14,7 @@ export default function Breadcrumb({ className }: { className?: string }) {
 
   return (
     <div
-      className={`${className} py-2 md:py-4 px-4 md:px-8 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100/[.8] dark:bg-zinc-900/[.8] backdrop-blur-sm`}
+      className={`${className} py-2 md:py-4 px-4 md:px-8 border-b border-zinc-200 dark:border-zinc-800 z-10`}
     >
       <div className="container mx-auto flex items-center">
         <ol className="flex gap-2 text-sm">

@@ -5,7 +5,9 @@ export default function ProjectPostLayout({
 }) {
   return (
     <div className="p-4 md:p-8">
-      <div className="prose prose-zinc dark:prose-invert">{children}</div>
+      <main className="container mx-auto prose prose-zinc dark:prose-invert">
+        {children}
+      </main>
     </div>
   );
 }

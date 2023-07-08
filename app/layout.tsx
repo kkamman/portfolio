@@ -64,7 +64,7 @@ export default function RootLayout({
             </div>
             <Breadcrumb className="hidden md:block" />
           </header>
-          <Breadcrumb className="sticky top-0 md:hidden" />
+          <Breadcrumb className="sticky top-0 md:hidden bg-zinc-100/[.8] dark:bg-zinc-900/[.8] backdrop-blur-sm" />
           <div className="relative flex-grow">{children}</div>
           <footer className="border-t p-4 md:p-8 border-zinc-200 dark:border-zinc-800 text-zinc-500">
             <div className="container mx-auto text-xs">
