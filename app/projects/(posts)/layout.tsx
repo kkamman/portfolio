@@ -3,5 +3,9 @@ export default function ProjectPostLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="prose prose-zinc dark:prose-invert">{children}</div>;
+  return (
+    <div className="p-4 md:p-8">
+      <div className="prose prose-zinc dark:prose-invert">{children}</div>
+    </div>
+  );
 }

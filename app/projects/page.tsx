@@ -1,5 +1,9 @@
 import Link from "next/link";
 
 export default function Projects() {
-  return <Link href="/projects/portfolio">Portfolio</Link>;
+  return (
+    <div className="p-4 md:p-8">
+      <Link href="/projects/portfolio">Portfolio</Link>
+    </div>
+  );
 }
