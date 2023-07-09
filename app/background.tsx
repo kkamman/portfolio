@@ -2,10 +2,29 @@
 
 import { Canvas, ThreeElements } from "@react-three/fiber";
 import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Mesh(props: ThreeElements["mesh"]) {
   const ref = useRef<THREE.Mesh>(null!);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    setDarkMode(window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+    function handleColorSchemeChange(e: MediaQueryListEvent) {
+      setDarkMode(e.matches);
+    }
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", handleColorSchemeChange);
+
+    return () => {
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .removeEventListener("change", handleColorSchemeChange);
+    };
+  }, []);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -18,12 +37,12 @@ function Mesh(props: ThreeElements["mesh"]) {
       gsap.fromTo(
         ref.current.scale,
         { x: 0, y: 0, z: 0 },
-        { x: 1.2, y: 1.2, z: 1.2, duration: 1, ease: "power4" }
+        { x: 1.2, y: 1.2, z: 1.2, duration: 2, ease: "power4", delay: 0.5 }
       );
 
       gsap.fromTo(
         ref.current.rotation,
-        { x: 0, y: 0, z: 0 },
+        { x: Math.PI + 2, y: Math.PI + 2, z: -Math.PI },
         {
           x: Math.PI,
           y: Math.PI,
@@ -38,8 +57,8 @@ function Mesh(props: ThreeElements["mesh"]) {
 
   return (
     <mesh {...props} ref={ref}>
-      <tetrahedronGeometry args={[2.5, 0]} />
-      <meshStandardMaterial color={"#111"} opacity={0} transparent={true} />
+      <tetrahedronGeometry args={[4, 0]} />
+      <meshStandardMaterial color={"white"} opacity={0} transparent={true} />
     </mesh>
   );
 }
@@ -47,8 +66,7 @@ function Mesh(props: ThreeElements["mesh"]) {
 export default function Background() {
   return (
     <Canvas>
-      <ambientLight intensity={1} />
-      <pointLight position={[10, 30, 30]} intensity={2} />
+      <ambientLight intensity={0.5} color={"#818cf8"} />
       <Mesh />
     </Canvas>
   );

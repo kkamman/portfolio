@@ -9,9 +9,9 @@ export default function Home() {
         <Background />
       </div>
       <main className="container mx-auto min-h-full flex">
-        <div className="flex-grow">
-          <div className="prose prose-zinc dark:prose-invert bg-zinc-100/[.8] dark:bg-zinc-900/[.8] backdrop-blur-xl text-center flex flex-col justify-center h-full mx-auto tracking-widest p-4">
-            <h1>Hey, I create stuff.</h1>
+        <div className="flex flex-col justify-center mx-auto md:bg-zinc-100/[.8] md:dark:bg-zinc-900/[.8] md:backdrop-blur-xl">
+          <div className="prose prose-zinc dark:prose-invert text-center tracking-widest bg-zinc-100/[.8] dark:bg-zinc-900/[.8] md:bg-transparent backdrop-blur-xl md:backdrop-blur-none p-4">
+            <h1>Hey, I build stuff.</h1>
             <p>
               At work I develop web applications, using primarily .NET and
               Angular.
