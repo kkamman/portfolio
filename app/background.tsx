@@ -37,12 +37,12 @@ function Mesh(props: ThreeElements["mesh"]) {
       gsap.fromTo(
         ref.current.scale,
         { x: 0, y: 0, z: 0 },
-        { x: 1.2, y: 1.2, z: 1.2, duration: 2, ease: "power4", delay: 0.5 }
+        { x: 1.2, y: 1.2, z: 1.2, duration: 2, ease: "power4" }
       );
 
       gsap.fromTo(
         ref.current.rotation,
-        { x: Math.PI + 2, y: Math.PI + 2, z: -Math.PI },
+        { x: Math.PI, y: Math.PI, z: Math.PI * 0.5},
         {
           x: Math.PI,
           y: Math.PI,
